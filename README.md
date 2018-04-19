@@ -1,3 +1,3 @@
-# Madhav's Dotfiles
+# Shebang-Everything
 
-These are the collection of some dotfiles, that make my system better.
+A perfect introduction to shell scripts
