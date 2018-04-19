@@ -5,6 +5,10 @@ Use this guide to get a great hold on shell scripting!
 
 ## Index Of Contents
 
+1. [Introduction to scripts](#Scripts)
+2. [Our first script](#Our-first-script)
+3. [Variables](#Variables)
+
 ## Scripts
 
 You might have came across the word 'script' a lot of times, but what is the meaninig of a script?  <br />
@@ -38,21 +42,21 @@ A script starts with #! __Path To Bash__
 
 **Basic Examples Of Shell Scripts**
 
-1. Using csh as interpreter
+- Using csh as interpreter
 
 ```sh
 #!/bin/csh
 echo "This script uses csh as the interpreter!"
 ```
 
-2. Using ksh as interpreter
+- Using ksh as interpreter
 
 ```sh
 #!/bin/ksh
 echo "This script uses ksh as the interpreter!"
 ```
 
-3. Using zsh as interpreter
+- Using zsh as interpreter
 
 ```sh
 #!/bin/zsh
@@ -63,4 +67,24 @@ echo "This script uses zsh as the interpreter!"
 
 If a script does not contain the shebang, the commands are executed using your shell, so there are chances that the code might run properly, but still, that isn't the correct way of doing it! <br/>
 Different shells have slightly varying syntax.
+<br />
 
+**More than just shell scripts!**  <br>
+
+You dont have to use shell as the interpreter for your scripts. For example, you can run a python script too by supplying the path in shebang.
+
+```sh
+#!/usr/bin/python
+print "This is a python script!"
+```
+
+To run it:
+
+```
+$ chmod 755 name.py
+$ ./name.py
+```
+
+[Find the code here](./python.py)
+
+## Variables
