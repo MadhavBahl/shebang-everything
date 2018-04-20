@@ -8,6 +8,9 @@ Use this guide to get a great hold on shell scripting!
 1. [Introduction to scripts](#scripts)
 2. [Our first script](#our-first-script)
 3. [Variables](#variables)
+   - [Syntax](#syntax-for-variables)
+   - [Examples](#examples-of-variables)
+   - [Valid Variable Names](#variable-names)
 
 ## Scripts
 
@@ -91,7 +94,7 @@ $ ./name.py
 
 Variables are basically storage location that have a name and can store some data which can be changed in future.
 
-### Syntax
+### Syntax For Variables
 
 ```sh
 VARIABLE_NAME = "Value"
@@ -105,7 +108,7 @@ VARIABLE_NAME = "Value"
 
 - To use a variable, just write the variable name followed by the `$` sign
 
-### Example
+### Examples Of Variables
 
 - Example 1
 
@@ -147,7 +150,7 @@ echo "$CONTENTS"
 
 [Download the code](./comd2.sh)
 
--Exampe 4
+- Example 4
 
 ```sh
 #!/bin/bash
@@ -156,3 +159,23 @@ echo "This script is being run on ${SERVER_NAME}"
 ```
 
 [Download the code](./comd.sh)
+
+### Variable Names
+
+Alphanumeric characters, starting with an alphabet or underscore and can contain digits or underscores in between.
+
+#### Valid Variable Names
+
+- THIS3VARIABLE="ABC"
+
+- THIS_IS_VARIABLE="ABC"
+
+- thisIsVariable="ABC"
+
+#### Invalid Variable Names
+
+- 4Number="NUM"
+
+- This-Is-Var="VAR"
+
+No special character apart from underscore is allowed!
