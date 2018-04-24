@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="shell-scripting">Shell Scripting</h1>
+<p>A shell script is a computer program designed to be run by the Unix shell, a command-line interpreter.
+Use this guide to get a great hold on shell scripting!</p>
+<h2 id="index-of-contents">Index Of Contents</h2>
+<ol>
+<li><a href="#scripts">Introduction to scripts</a></li>
+<li><a href="#our-first-script">Our first script</a></li>
+<li><a href="#variables">Variables</a>
+<ol>
+<li><a href="#syntax-for-variables">Syntax</a></li>
+<li><a href="#examples-of-variables">Examples</a></li>
+<li><a href="#variable-names">Valid Variable Names</a></li>
+</ol>
+</li>
+<li><a href="#tests">Tests</a>
+<ol>
+<li><a href="#syntax-for-tests">Syntax</a></li>
+<li><a href="#file-test-operations">File Operations</a></li>
+<li><a href="#string-test-operations">String Operations</a></li>
+<li><a href="#arithmetic-operators">Arithmetic Operations</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="scripts">Scripts</h2>
+<p>You might have came across the word 'script' a lot of times, but what is the meaninig of a script?  <br />
+So basically, a script is a command line program that contains a series of commands to be executed. These commands are execued by an interpreter. <br />
+Anything you can put into a command line, you can put in a script. And, scripts are great for automating tasks.
+If you find yourself repeating some commands frequently, you can, rather you should, create a script for doing it!</p>
+<p><img src="https://user-images.githubusercontent.com/26179770/39190779-f24c3094-47f2-11e8-8665-c8dd6e369a2d.png" alt="image"></p>
+<h2 id="our-first-script">Our first script</h2>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"My First Script!"</span>
+</div></code></pre>
+<p>To run it:</p>
+<pre class="hljs"><code><div>$ chmod 755 script.sh
+$ ./script.sh
+</div></code></pre>
+<p><a href="./first.sh">Find the code here</a></p>
+<h2 id="shebang">Shebang</h2>
+<p>A script starts with #! <strong>Path To Bash</strong></p>
+<p><code>#</code> is often called sharp and <code>!</code> is called Bang, hence the name sharp bang, but generally people say it <strong>shebang</strong> instead of sharp bang.</p>
+<p><strong>Basic Examples Of Shell Scripts</strong></p>
+<ul>
+<li>Using csh as interpreter</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/csh</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"This script uses csh as the interpreter!"</span>
+</div></code></pre>
+<ul>
+<li>Using ksh as interpreter</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/ksh</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"This script uses ksh as the interpreter!"</span>
+</div></code></pre>
+<ul>
+<li>Using zsh as interpreter</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/zsh</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"This script uses zsh as the interpreter!"</span>
+</div></code></pre>
+<h3 id="use-it-or-not">Use it or not?</h3>
+<p>If a script does not contain the shebang, the commands are executed using your shell, so there are chances that the code might run properly, but still, that isn't the correct way of doing it! <br/>
+Different shells have slightly varying syntax.
+<br /></p>
+<p><strong>More than just shell scripts!</strong>  <br></p>
+<p>You dont have to use shell as the interpreter for your scripts. For example, you can run a python script too by supplying the path in shebang.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">#!/usr/bin/python</span>
+<span class="hljs-built_in">print</span> <span class="hljs-string">"This is a python script!"</span>
+</div></code></pre>
+<p>To run it:</p>
+<pre class="hljs"><code><div>$ chmod 755 name.py
+$ ./name.py
+</div></code></pre>
+<p><a href="./python.py">Find the code here</a></p>
+<h2 id="variables">Variables</h2>
+<p>Variables are basically storage location that have a name and can store some data which can be changed in future.</p>
+<h3 id="syntax-for-variables">Syntax For Variables</h3>
+<pre class="hljs"><code><div>VARIABLE_NAME = <span class="hljs-string">"Value"</span>
+</div></code></pre>
+<h3 id="important">Important</h3>
+<ul>
+<li>
+<p>Variables are case sensitive</p>
+</li>
+<li>
+<p>By convention, variables are uppercase</p>
+</li>
+<li>
+<p>To use a variable, just write the variable name followed by the <code>$</code> sign</p>
+</li>
+</ul>
+<h3 id="examples-of-variables">Examples Of Variables</h3>
+<ul>
+<li>Example 1</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+MY_NAME=<span class="hljs-string">"Madhav Bahl"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello, I am <span class="hljs-variable">$MY_NAME</span>"</span>
+</div></code></pre>
+<p><a href="./name.sh">Download the code</a></p>
+<ul>
+<li>Example 2</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+MY_NAME=<span class="hljs-string">"Madhav Bahl"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello, I am <span class="hljs-variable">${MY_NAME}</span>"</span>
+</div></code></pre>
+<p><a href="./name2.sh">Download the code</a></p>
+<ul>
+<li>Example 3: Assign command output to a variable</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+CONTENTS=$(ls)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"The contents of this directory are: "</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CONTENTS</span>"</span>
+</div></code></pre>
+<p>An alternative:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+CONTENTS=`ls`
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"The contents of this directory are: "</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CONTENTS</span>"</span>
+</div></code></pre>
+<p><a href="./comd2.sh">Download the code</a></p>
+<ul>
+<li>Example 4</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+SERVER_NAME=$(hostname)
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"This script is being run on <span class="hljs-variable">${SERVER_NAME}</span>"</span>
+</div></code></pre>
+<p><a href="./comd.sh">Download the code</a></p>
+<h3 id="variable-names">Variable Names</h3>
+<p>Alphanumeric characters, starting with an alphabet or underscore and can contain digits or underscores in between.</p>
+<h4 id="valid-variable-names">Valid Variable Names</h4>
+<ul>
+<li>
+<p>THIS3VARIABLE=&quot;ABC&quot;</p>
+</li>
+<li>
+<p>THIS_IS_VARIABLE=&quot;ABC&quot;</p>
+</li>
+<li>
+<p>thisIsVariable=&quot;ABC&quot;</p>
+</li>
+</ul>
+<h4 id="invalid-variable-names">Invalid Variable Names</h4>
+<ul>
+<li>
+<p>4Number=&quot;NUM&quot;</p>
+</li>
+<li>
+<p>This-Is-Var=&quot;VAR&quot;</p>
+</li>
+</ul>
+<p>No special character apart from underscore is allowed!</p>
+<h2 id="tests">Tests</h2>
+<p>Scripts are basically needed to remove the need of again and again typing the commands which you use frequently or basically automating tasks. But, what if the script you wrote needs to execute differently under different circumstances? You can make the decisions using tests.</p>
+<h3 id="syntax-for-tests">Syntax for tests</h3>
+<pre class="hljs"><code><div>[ condition-to-test-for ]
+</div></code></pre>
+<h4 id="example"><a href="./test1.sh">Example</a></h4>
+<pre class="hljs"><code><div>[ -e /etc/passwd ]
+</div></code></pre>
+<p>This test checks whether /etc/passwd exists, if it does, it returns true (or, it exits with a status of 0). If the file doesnt exists, it returns false (status 1).</p>
+<h3 id="file-test-operations">File Test Operations</h3>
+<pre class="hljs"><code><div>  -d FILE_NAM  <span class="hljs-comment"># True if FILE_NAM is a directory</span>
+  -e FILE_NAM  <span class="hljs-comment"># True if FILE_NAM exists</span>
+  -f FILE_NAM  <span class="hljs-comment"># True if FILE_NAM exists and is a regular file</span>
+  -r FILE_NAM  <span class="hljs-comment"># True if FILE_NAM is readable</span>
+  -s FILE_NAM  <span class="hljs-comment"># True if FILE_NAM exists and is not empty</span>
+  -w FILE_NAM  <span class="hljs-comment"># True if FILE_NAM has write permission</span>
+  -x FILE_NAM  <span class="hljs-comment"># True if FILE_NAM is executable</span>
+</div></code></pre>
+<h3 id="string-test-operations">String Test Operations</h3>
+<pre class="hljs"><code><div>  -z STRING  <span class="hljs-comment"># True if STRING is empty</span>
+  -n STRING  <span class="hljs-comment"># True if STRING is not empty</span>
+  STRING1 = STRIN2 <span class="hljs-comment"># True if strings are equal</span>
+  STRING1 != STRIN2 <span class="hljs-comment"># True if strings are not equal</span>
+</div></code></pre>
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+<pre class="hljs"><code><div>  var1 -eq var2  <span class="hljs-comment"># True if var1 is equal to var2</span>
+  var1 -ne var2  <span class="hljs-comment"># True if var1 not equal to var2</span>
+  var1 -lt var2  <span class="hljs-comment"># True if var1 is less than var2</span>
+  var1 -le var2  <span class="hljs-comment"># True if var1 is less than or equal to var2</span>
+  var1 -gt var2  <span class="hljs-comment"># True if var1 is greater than var2</span>
+  var1 -ge var2  <span class="hljs-comment"># True if var1 is greater than or equal to var2</span>
+</div></code></pre>
+
+</body>
+</html>

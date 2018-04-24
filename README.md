@@ -24,7 +24,7 @@ So basically, a script is a command line program that contains a series of comma
 Anything you can put into a command line, you can put in a script. And, scripts are great for automating tasks.
 If you find yourself repeating some commands frequently, you can, rather you should, create a script for doing it!
 
-![image](https://user-images.githubusercontent.com/26179770/39010322-e6a6c97c-442b-11e8-909f-64ff9723c739.png)
+![image](https://user-images.githubusercontent.com/26179770/39190779-f24c3094-47f2-11e8-8665-c8dd6e369a2d.png)
 
 ## Our first script
 
