@@ -8,9 +8,14 @@ Use this guide to get a great hold on shell scripting!
 1. [Introduction to scripts](#scripts)
 2. [Our first script](#our-first-script)
 3. [Variables](#variables)
-   - [Syntax](#syntax-for-variables)
-   - [Examples](#examples-of-variables)
-   - [Valid Variable Names](#variable-names)
+   1. [Syntax](#syntax-for-variables)
+   2. [Examples](#examples-of-variables)
+   3. [Valid Variable Names](#variable-names)
+4. [Tests](#tests)
+   1. [Syntax](#syntax-for-tests)
+   2. [File Operations](#file-test-operations)
+   3. [String Operations](#string-test-operations)
+   4. [Arithmetic Operations](#arithmetic-operators)
 
 ## Scripts
 
@@ -179,3 +184,53 @@ Alphanumeric characters, starting with an alphabet or underscore and can contain
 - This-Is-Var="VAR"
 
 No special character apart from underscore is allowed!
+
+## Tests
+
+Scripts are basically needed to remove the need of again and again typing the commands which you use frequently or basically automating tasks. But, what if the script you wrote needs to execute differently under different circumstances? You can make the decisions using tests.
+
+### Syntax for tests
+
+```sh
+[ condition-to-test-for ]
+```
+
+#### [Example](./test1.sh)
+
+```sh
+[ -e /etc/passwd ]
+```
+
+This test checks whether /etc/passwd exists, if it does, it returns true (or, it exits with a status of 0). If the file doesnt exists, it returns false (status 1).
+
+### File Test Operations
+
+```sh
+  -d FILE_NAM  # True if FILE_NAM is a directory
+  -e FILE_NAM  # True if FILE_NAM exists
+  -f FILE_NAM  # True if FILE_NAM exists and is a regular file
+  -r FILE_NAM  # True if FILE_NAM is readable
+  -s FILE_NAM  # True if FILE_NAM exists and is not empty
+  -w FILE_NAM  # True if FILE_NAM has write permission
+  -x FILE_NAM  # True if FILE_NAM is executable
+```
+
+### String Test Operations
+
+```sh
+  -z STRING  # True if STRING is empty
+  -n STRING  # True if STRING is not empty
+  STRING1 = STRIN2 # True if strings are equal
+  STRING1 != STRIN2 # True if strings are not equal
+```
+
+### Arithmetic Operators
+
+```sh
+  var1 -eq var2  # True if var1 is equal to var2
+  var1 -ne var2  # True if var1 not equal to var2
+  var1 -lt var2  # True if var1 is less than var2
+  var1 -le var2  # True if var1 is less than or equal to var2
+  var1 -gt var2  # True if var1 is greater than var2
+  var1 -ge var2  # True if var1 is greater than or equal to var2
+```
