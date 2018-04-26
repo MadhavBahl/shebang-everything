@@ -234,3 +234,42 @@ This test checks whether /etc/passwd exists, if it does, it returns true (or, it
   var1 -gt var2  # True if var1 is greater than var2
   var1 -ge var2  # True if var1 is greater than or equal to var2
 ```
+
+## Exit Status
+
+Every command returns an exit status, also called the return code which ranges from 0 to 255. 
+Exit status are used for error checking. 
+
+- 0 means success
+
+- Any code other than 0 means an error condition.
+
+To find out what an exit status for a command means, one can look for the documentations or manual using `man` or `info` command.
+
+`$?` contains the return code of previously executed command.
+
+<br>
+Example:
+
+```sh
+#!/bin/bash
+ls /randomDirectory   # Any Directory which does not exist
+echo "$?"    # This command will return 2
+```
+
+Another Example:
+
+```sh
+#!/bin/bash
+HOST="google.com"
+ping -c 1 $HOST     # -c is used for count, it will send the request, number of times mentioned
+RETURN_CODE=$?
+if [ "$RETURN_CODE" -eq "0" ]
+then
+  echo "$HOST reachable"
+else
+  echo "$HOST unreachable"
+fi
+```
+
+## Logic Operations
