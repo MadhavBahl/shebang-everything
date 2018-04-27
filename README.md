@@ -16,6 +16,7 @@ Use this guide to get a great hold on shell scripting!
    2. [File Operations](#file-test-operations)
    3. [String Operations](#string-test-operations)
    4. [Arithmetic Operations](#arithmetic-operators)
+5. [Making Decisions Based On Conditions](#making-decisions)
 
 ## Scripts
 
@@ -233,6 +234,108 @@ This test checks whether /etc/passwd exists, if it does, it returns true (or, it
   var1 -le var2  # True if var1 is less than or equal to var2
   var1 -gt var2  # True if var1 is greater than var2
   var1 -ge var2  # True if var1 is greater than or equal to var2
+```
+
+## Making Decisions
+
+Just like any script, shell scripts can make decisions based on conditions.
+
+### The IF Statement
+
+Syntax:
+
+```sh
+if [ condition-is-true ]
+then
+  command 1
+  command 2
+    ...
+    ...
+  command N
+fi
+```
+
+[Example:](./ifStat.sh)
+
+```sh
+#!/bin/bash
+SHELL_NAME="bash"
+
+if [ "$SHELL_NAME" = "bash" ]
+then
+  echo "You are using bash shell"
+fi
+```
+
+### IF-ELSE Tree
+
+Syntax:
+
+```sh
+if [ condition-is-true ]
+then
+  command 1
+  command 2
+    ...
+    ...
+  command N
+else
+  command N+1
+  command N+2
+    ...
+    ...
+  command M
+fi
+```
+
+[Example:](./ifElse.sh)
+
+```sh
+#!/bin/bash
+SHELL_NAME="bash"
+
+if [ "$SHELL_NAME" = "bash" ]
+then
+  echo "You are using bash shell"
+else
+  echo "You are not using the bash shell"
+fi
+```
+
+### IF-ELIF Ladder
+
+Syntax:
+
+```sh
+if [ condition-is-true ]
+then
+  command 1
+elif [ condition-is-true ]
+then
+  command 2
+elif [ condition-is-true ]
+then
+  command 3
+else
+  command 4
+fi
+```
+
+[Example:](./ifElif.sh)
+
+```sh
+#!/bin/bash
+SHELL_NAME="bash"
+
+if [ "$SHELL_NAME" = "bash" ]
+then
+  echo "You are using bash shell"
+elif [ "$SHELL_NAME" = "csh" ]
+then
+  echo "You are using csh shell"
+else
+  echo "You are not using the bash or csh shell"
+fi
 ```
 
 ## Exit Status
