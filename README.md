@@ -18,6 +18,7 @@ Use this guide to get a great hold on shell scripting!
    4. [Arithmetic Operations](#arithmetic-operators)
 5. [Making Decisions Based On Conditions (The IF Statement)](#making-decisions)
 6. [Iteration (The FOR Loop)](#for-loop)
+7. [Positional Parameters](#positionoal-parameters)
 
 ## Scripts
 
@@ -49,6 +50,17 @@ $ ./script.sh
 A script starts with #! __Path To Bash__
 
 `#` is often called sharp and `!` is called Bang, hence the name sharp bang, but generally people say it **shebang** instead of sharp bang.
+
+### Comments
+
+Comments are started by a `#` sign, anything after pound sign on that line is ignored.
+
+#### Example
+```sh
+#!/bin/bash
+echo "Hello World!"
+# This line won be executed!
+```
 
 **Basic Examples Of Shell Scripts**
 
@@ -390,6 +402,48 @@ for FILE in $FILES
 do
   echo "Renaming $FILE to new-$FILE"
   mv $FILE $NEW-$FILE
+done
+```
+
+## Positional Parameters
+
+Some arguements or parameters can be passed when we call the script. 
+
+For Example:
+
+`$script.sh param1 param2 param3 param4`
+
+All the parameters will be stored in:
+
+```sh
+  $0 -- "script.sh"
+  $1 -- "param1"
+  $2 -- "param2"
+  $3 -- "param3"
+  $4 -- "param4"
+```
+
+### [Example](./pos-param/pos2.sh)
+
+```sh
+#!/bin/bash
+echo "Running script: $0"
+echo "Parameter 1: $1"
+echo "Parameter 2: $2"
+echo "Parameter 3: $3"
+echo "Parameter 4: $4"
+```
+
+To access all the parameters, use `$@` sign
+
+#### [Example](./pos-param/pos2.sh)
+
+```sh
+#!/bin/bash
+echo "Running script: $0"
+for PARAM in $@
+do
+  echo "Parameter: $PARAM"
 done
 ```
 
