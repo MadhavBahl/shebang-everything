@@ -16,7 +16,8 @@ Use this guide to get a great hold on shell scripting!
    2. [File Operations](#file-test-operations)
    3. [String Operations](#string-test-operations)
    4. [Arithmetic Operations](#arithmetic-operators)
-5. [Making Decisions Based On Conditions](#making-decisions)
+5. [Making Decisions Based On Conditions (The IF Statement)](#making-decisions)
+6. [Iteration (The FOR Loop)](#for-loop)
 
 ## Scripts
 
@@ -336,6 +337,60 @@ then
 else
   echo "You are not using the bash or csh shell"
 fi
+```
+
+## For Loop
+
+Loops can execute a block of code a number of times and are basically used for performing iterations.
+Just like any other programming language, shell scripts also have for loops.
+
+### Syntax
+
+```sh
+for VARIABLE_NAME in ITEM_1 ITEM_N
+do
+  command 1
+  command 2
+    ...
+    ...
+  command N
+done
+```
+
+### [Example](./loops/color.sh)
+
+```sh
+#!/bin/bash
+for COLOR in red green blue
+do
+  echo "The Color is: ${COLOR}"
+done
+```
+
+[Alternatively,](./loops/color2.sh)
+
+```sh
+#!/bin/bash
+COLORS="red green blue"
+for COLOR in $COLORS
+do
+  echo "The Color is: ${COLOR}"
+done
+```
+
+### [Example 2](./loops/picture.sh)
+
+In this simple example we will see how to rename each file with .txt format
+
+```sh
+#!/bin/bash
+FILES=$(ls *txt)
+NEW="new"
+for FILE in $FILES
+do
+  echo "Renaming $FILE to new-$FILE"
+  mv $FILE $NEW-$FILE
+done
 ```
 
 ## Exit Status
