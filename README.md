@@ -18,7 +18,8 @@ Use this guide to get a great hold on shell scripting!
    4. [Arithmetic Operations](#arithmetic-operators)
 5. [Making Decisions Based On Conditions (The IF Statement)](#making-decisions)
 6. [Iteration (The FOR Loop)](#for-loop)
-7. [Positional Parameters](#positionoal-parameters)
+7. [Positional Parameters](#positional-parameters)
+8. [Sample Programs For Revision](#some-sample-programs)
 
 ## Scripts
 
@@ -369,6 +370,17 @@ do
 done
 ```
 
+```sh
+for (( VAR=1;VAR<N;VAR++ ))
+do
+  command 1
+  command 2
+    ...
+    ...
+  command N
+done
+```
+
 ### [Example](./loops/color.sh)
 
 ```sh
@@ -434,9 +446,9 @@ echo "Parameter 3: $3"
 echo "Parameter 4: $4"
 ```
 
-To access all the parameters, use `$@` sign
+**To access all the parameters, use `$@` sign**
 
-#### [Example](./pos-param/pos2.sh)
+### [Example](./pos-param/pos2.sh)
 
 ```sh
 #!/bin/bash
@@ -446,6 +458,31 @@ do
   echo "Parameter: $PARAM"
 done
 ```
+
+## User Input-STDIN
+
+`read` command accepts STDIN (Standard Input)
+
+### Syntax
+
+```sh
+read -p "PROMPT MESSAGE" VARIABLE
+```
+
+### [Example](./stdin/stdin.sh)
+
+```sh
+#!/bin/bash
+read -p "Please Enter You Name: " NAME
+echo "Your Name Is: $NAME"
+```
+
+## [Some Sample Programs](./practise1/)
+
+Any field whether it may be computer science or any other, requires practise.
+Please consider this as a practise assignment, and try to do all the questions given [here](./practise1/) yourself and then see the answers.
+
+[Click here to see the programs](./practise1/)
 
 ## Exit Status
 
