@@ -3,6 +3,13 @@
 A shell script is a computer program designed to be run by the Unix shell, a command-line interpreter.
 Use this guide to get a great hold on shell scripting!
 
+<meta name="description" content="You might have came across the word 'script' a lot of times, but what is the meaninig of a script? 
+How can you write scripts? What is shell scripting? 
+What all can we do using shell? 
+Find all your answers on this tutorial website (Your unofficial guidebook too shell programming)" />
+
+<link rel="shortcut icon" href="img/bash.png">
+
 ## Index Of Contents
 
 1. [Introduction to scripts](#scripts)
@@ -19,7 +26,9 @@ Use this guide to get a great hold on shell scripting!
 5. [Making Decisions Based On Conditions (The IF Statement)](#making-decisions)
 6. [Iteration (The FOR Loop)](#for-loop)
 7. [Positional Parameters](#positional-parameters)
-8. [Sample Programs For Revision](#some-sample-programs)
+8. [Exit Statuses](#exit-status)
+9. [Logical Operations](#logic-operations)
+10. [Sample Programs For Revision](#some-sample-programs)
 
 ## Scripts
 
@@ -477,13 +486,6 @@ read -p "Please Enter You Name: " NAME
 echo "Your Name Is: $NAME"
 ```
 
-## Some Sample Programs
-
-Any field whether it may be computer science or any other, requires practise.
-Please consider this as a practise assignment, and try to do all the questions given [here](./practise1/) yourself and then see the answers.
-
-[Click here to see the programs](./practise1/)
-
 ## Exit Status
 
 Every command returns an exit status, also called the return code which ranges from 0 to 255. 
@@ -498,7 +500,7 @@ To find out what an exit status for a command means, one can look for the docume
 `$?` contains the return code of previously executed command.
 
 <br>
-Example:
+[Example:](./exit-status/error.sh)
 
 ```sh
 #!/bin/bash
@@ -506,7 +508,7 @@ ls /randomDirectory   # Any Directory which does not exist
 echo "$?"    # This command will return 2
 ```
 
-Another Example:
+[Another Example:](./exit-status/ping.sh)
 
 ```sh
 #!/bin/bash
@@ -522,3 +524,47 @@ fi
 ```
 
 ## Logic Operations
+Shell scripts supports **logical AND** and **logical OR**.
+
+### AND
+
+The AND Operator results true if all the conditions are satisfied.
+
+`&& = AND`
+
+[Example](./exit-status/and.sh)
+
+```sh
+#!/bin/bash
+MY_VAR=10
+if [ "$MY_VAR" -ge 5 ] && [ "$MY_VAR" -le 15 ]
+then
+  echo "Given variable is within the range"
+fi
+```
+
+### OR
+
+The OR Operator results true if any one the conditions are satisfied.
+
+`|| = OR`
+
+[Example](./exit-status/or.sh)
+
+```sh
+#!/bin/bash
+MY_VAR=10
+if [ "$MY_VAR" -ge 15 ] || [ "$MY_VAR" -le 11 ]
+then
+  echo "Given variable is either greater than 15 or less than 11"
+fi
+```
+
+
+
+## Some Sample Programs
+
+Any field whether it may be computer science or any other, requires practise.
+Please consider this as a practise assignment, and try to do all the questions yourself and then see the code.
+
+[Click here to see the practise programs #1](./practise1/)
