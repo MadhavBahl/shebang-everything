@@ -1,6 +1,6 @@
 # Shebang-Everything
 
-Your onofficial guidebook to shell programming
+Your unofficial guidebook to shell programming
 
 ## Programs for practise
 

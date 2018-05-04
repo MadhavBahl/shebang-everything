@@ -44,7 +44,7 @@ $ chmod 755 script.sh
 $ ./script.sh
 ```
 
-[Find the code here](./first.sh)
+[Find the code here](./first/first.sh)
 
 ## Shebang
 
@@ -108,7 +108,7 @@ $ chmod 755 name.py
 $ ./name.py
 ```
 
-[Find the code here](./python.py)
+[Find the code here](./first/python.py)
 
 ## Variables
 
@@ -138,7 +138,7 @@ MY_NAME="Madhav Bahl"
 echo "Hello, I am $MY_NAME"
 ```
 
-[Download the code](./name.sh)
+[Download the code](./variable/name.sh)
 
 - Example 2
 
@@ -148,7 +148,7 @@ MY_NAME="Madhav Bahl"
 echo "Hello, I am ${MY_NAME}"
 ```
 
-[Download the code](./name2.sh)
+[Download the code](./variable/name2.sh)
 
 - Example 3: Assign command output to a variable
 
@@ -168,7 +168,7 @@ echo "The contents of this directory are: "
 echo "$CONTENTS"
 ```
 
-[Download the code](./comd2.sh)
+[Download the code](./variable/comd2.sh)
 
 - Example 4
 
@@ -178,7 +178,7 @@ SERVER_NAME=$(hostname)
 echo "This script is being run on ${SERVER_NAME}"
 ```
 
-[Download the code](./comd.sh)
+[Download the code](./variable/comd.sh)
 
 ### Variable Names
 
@@ -210,7 +210,7 @@ Scripts are basically needed to remove the need of again and again typing the co
 [ condition-to-test-for ]
 ```
 
-#### [Example](./test1.sh)
+#### [Example](./variable/test1.sh)
 
 ```sh
 [ -e /etc/passwd ]
@@ -269,7 +269,7 @@ then
 fi
 ```
 
-[Example:](./ifStat.sh)
+[Example:](./ifElse/ifStat.sh)
 
 ```sh
 #!/bin/bash
@@ -302,7 +302,7 @@ else
 fi
 ```
 
-[Example:](./ifElse.sh)
+[Example:](./ifElse/ifElse.sh)
 
 ```sh
 #!/bin/bash
@@ -335,7 +335,7 @@ else
 fi
 ```
 
-[Example:](./ifElif.sh)
+[Example:](./ifElse/ifElif.sh)
 
 ```sh
 #!/bin/bash
@@ -477,7 +477,7 @@ read -p "Please Enter You Name: " NAME
 echo "Your Name Is: $NAME"
 ```
 
-## [Some Sample Programs](./practise1/)
+## Some Sample Programs
 
 Any field whether it may be computer science or any other, requires practise.
 Please consider this as a practise assignment, and try to do all the questions given [here](./practise1/) yourself and then see the answers.
