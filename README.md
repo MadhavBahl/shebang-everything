@@ -27,12 +27,15 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
 6. [Iteration (The FOR Loop)](#for-loop)
 7. [Positional Parameters](#positional-parameters)
 8. [Exit Statuses](#exit-status)
-9. [Logical Operations](#logic-operations)
+   1. [Logical Operations](#logic-operations)
+   2. [The Semicolon](#the-semicolon)
+   3. [The Exit Command](#the-exit-command)
+
 10. [Sample Programs For Revision](#some-sample-programs)
 
 ## Scripts
 
-You might have came across the word 'script' a lot of times, but what is the meaninig of a script?  <br />
+You might have came across the word 'script' a lot of times, but what is the meaning of a script?  <br />
 So basically, a script is a command line program that contains a series of commands to be executed. These commands are execued by an interpreter. <br />
 Anything you can put into a command line, you can put in a script. And, scripts are great for automating tasks.
 If you find yourself repeating some commands frequently, you can, rather you should, create a script for doing it!
@@ -523,7 +526,7 @@ else
 fi
 ```
 
-## Logic Operations
+### Logic Operations
 Shell scripts supports **logical AND** and **logical OR**.
 
 ### AND
@@ -543,6 +546,16 @@ then
 fi
 ```
 
+**Note** While using AND, the second command will run only if the first command returns a 0 exit status.
+
+Exampe:
+
+```bash
+mkdir tempDir && cd tempDir && mkdir subTempDir
+```
+
+In this example, tempDir is created with `mkdir` command. If it succeeds, then `cd tempDir` is executed.
+
 ### OR
 
 The OR Operator results true if any one the conditions are satisfied.
@@ -560,7 +573,60 @@ then
 fi
 ```
 
+**Note** Just like in AND operation, here also, the first condition will be execued first. If it returns the status code 0, then next condition will not be checked.
 
+### The Semicolon
+
+Separate commands on the same line with a semicolon in between to make sure that they all get executed.
+The command following the semicolon will always get executed no matter the previous command failed or succeeded.
+
+Example:
+
+```sh
+mkdir dir1 ; cd dir1
+```
+
+The above code is equivalent to
+
+```sh
+mkdir dir1
+cd dir1
+```
+
+### The Exit Command
+
+Exit command is used to expicitly define the return code.
+If we do not define the exit status of the shell script explicitly, then by default the exit status of the last command executed is taken as the exit status of the script.
+We can use exit command anywherer in the script, and as soon as exit command is encountered, the shell script will stop executing.
+
+```sh
+  exit 0
+  exit 1
+  exit 2
+    ...
+    ...
+  exit 255
+```
+
+[Example:](./exit-status/exitCode.sh)
+
+```sh
+#!/bin/bash
+DIR_NAME="/home/madhav/Desktop/Play"
+if [ -e $DIR_NAME ]
+then
+  echo "Given Directory Already Exists"
+  echo "Moving into ${DIR_NAME}"
+  cd $DIR_NAME
+  exit 0
+fi
+echo "Given Directory Does Not Exists"
+mkdir $DIR_NAME
+cd $DIR_NAME
+exit 1
+```
+
+Therefore, using exit code, we can can define custom meanings to exit statuses.
 
 ## Some Sample Programs
 
