@@ -725,6 +725,45 @@ function greetings() {
 greetings World! Random Guy Stranger
 ```
 
+### Variable Scope
+
+### Global Variables
+
+All variables have, by default, global scope. Having a global scope means that the value of that variable can be accessed from anywhere in the script. Variables must be defined before it is used.
+
+**Note:** If a variable is defined within a function, it can not be used until that function is called at least once.
+
+### Local Variables
+
+Local variables can be accessed only from within the function. Local variables are created using `local` keyword and only functions can have local variables. It is a good practise to keep variables inside a function local.
+
+```sh
+function myFunc () {
+  local MY_VAR="Hello World"
+  # MY_VAR is available here
+  echo "$MY_VAR"
+}
+# MY_VAR is not available here
+```
+
+### Return codes for function
+
+A function acts just like a shell script, moreover, a function may be referred to as a shell script within a shell script. Therefore, functions also have an exit status (more precisely, a return code)
+
+**Implicitly** The exit status of last command executed acts as the return code for the function.
+
+**Explicitly** Return codes can me custom. `return <RETURN_CODE>`
+
+**Note** Valid range for return codes = 0 to 255 (0 = Success)
+
+We can use `$?` to get the return code of a function.
+
+```sh
+myFunc
+echo $?
+```
+
+
 ## Some Sample Programs
 
 Any field whether it may be computer science or any other, requires practise.
