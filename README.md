@@ -628,6 +628,103 @@ exit 1
 
 Therefore, using exit code, we can can define custom meanings to exit statuses.
 
+## Functions
+
+A set of instructions which can be reused/called any time from the main program whenever the need for those instructions arrives. Consider a situation that you have a particular module that does a particular job, now let's suppose that job has to be done 20 (say) times in the main program (for example calculating maximum number in an array of numbers). Now, if you write the code for that 20 times, your code would become very large, however, if we write a function for that, and call that function whenever it is required, the code would remain short, easy to read and much more modularised. 
+
+Moreover, it is a great coding practise to keep your code DRY. 
+DRY stands for Don't Repeat Yourself, i.e., write the code in such a way that you dont have to be copy and pasting same piece of code around everywhere!
+
+Therefore, functions are great because they make the code DRY, we can write once and use that many times, using functions reduces overall length/size of script. Moreover, functions make program easier to maintain, because they make the code divided into modules making particular place to edit and troubleshoot available in case of bugs/errors.
+
+Whenever you find yourself repeating a set of instructions, make a function for that. (A functin must be defined before use).
+
+**Note:** It is a good practise to define all your functions at the top before starting the main pragram or main instructions.
+
+### Syntax
+
+```sh
+function function_name() {
+    command 1
+    command 2
+    command 3
+      ...
+      ...
+    command N
+}
+```
+
+Or, 
+
+```sh
+function_name() {
+    command 1
+    command 2
+    command 3
+      ...
+      ...
+    command N
+}
+```
+
+#### [To call a function](./functions/call.sh)
+
+To call a function, simply write it's name on a line in the script.
+
+```sh
+#!/bin/bash
+function myFunc () {
+    echo "Shell Scripting Is Fun!"
+}
+myFunc
+```
+
+**Note:** While calling functions, do not use paranthesis like we use in other programming languages.
+
+### Calling a function from another function
+
+To call a function from another function, simply write the function name of the function you want to call.
+
+[Example:](./functions/greet.sh)
+
+```sh
+#!/bin/bash
+function greetings() {
+  USER=$(whoami)
+  echo "Welcome ${USER}"
+  currentTime
+}
+function currentTime() {
+  echo "Current Time Is: $(date +%r)"
+}
+greetings
+```
+
+### Positional Parameters In Functions
+
+Just like a shell script, functions can also accept parameters.
+
+The first parameter is stored in $1
+The second paramaeter is stored in $2 and so on.
+$@ contains all the parameters.
+
+**Note:** $0 is still the name of script itself, not the name of function.
+
+To provide parameters, just write them after the function name with a white space in between.
+
+[Example](./functions/greet2.sh)
+
+```sh
+#!/bin/bash
+function greetings() {
+  for PERSON_NAME in $@
+  do
+    echo "Hello ${PERSON_NAME}"
+  done
+}
+greetings World! Random Guy Stranger
+```
+
 ## Some Sample Programs
 
 Any field whether it may be computer science or any other, requires practise.
