@@ -25,3 +25,11 @@ status report "Command Executed!" and exit with a 0 exit status.  If the command
 non­zero exit status report "Command Not Executed!" and exit with a 1 exit status. 
 
 [See the code here!](./prog3.sh)
+
+### Program 4
+
+Write a function in shell script to take a path as arguement and print the number of files/directories in that path.
+
+**Hint** You can try copying the output of ls command in a text file and then count the number of lines in that file.
+
+[See the code here!](./prog4.sh)

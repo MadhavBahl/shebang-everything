@@ -30,7 +30,9 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
    1. [Logical Operations](#logic-operations)
    2. [The Semicolon](#the-semicolon)
    3. [The Exit Command](#the-exit-command)
-
+9. [Functions in shell](#functions)
+   1. [Syntax for creating functions](#functions)
+   2. [Calling a function from another function](#calling-a-function-from-another-function)
 10. [Sample Programs For Revision](#some-sample-programs)
 
 ## Scripts
@@ -763,6 +765,81 @@ myFunc
 echo $?
 ```
 
+## Wildcards
+
+A character or a string patterns that is used to match file and directory names is/are called wildcard(s).
+
+The process used to expand wildcard pattern into a list of files and/or directories (or basically paths) is called Globbing.
+
+Wild Cards can be used with most of the commands that require file/dir path as arguement. (Example ls,rm,cp etc).
+
+### Some Commonly Used Wildcards
+
+#### * - Matches zero or more characters
+
+**Example:**
+
+`*.txt`
+`hello.*`
+`great*.md`
+
+#### ? - matches exactly one character
+
+**Example:**
+
+`?.md`
+`Hello?`
+
+#### [] - A character class
+
+This wildcard is used to match any of the characters included between the square brackets (Matching exactly one character).
+
+**Example:** `He[loym]`, `[AIEOU]`
+
+#### [!] - maches characters not included within brackets
+
+It matches exactly one character.
+
+**Example:** To match a consonant: `[!aeiou]
+
+**Note: We can create range using characer classes**
+
+`[1-5]` -- Mathces number 1 to 5
+
+`[a-e]` -- Matches character a,b,c,d,e
+
+### Predefined named character classes
+
+- [[:alpha:]]
+
+- [[:alnum:]]
+
+- [[:space:]]
+
+- [[:upper:]]]
+
+- [[:lower:]]
+
+- [[:digit:]]
+
+### Matching wildcard characters
+
+In case we have to match wildcard characters themselves like `*`, or `?`, we can go with escape character - `\`
+
+Example: `*\?` --> will match all files that end with a question mark.
+
+### Using wildcards in shell scripts
+
+```sh
+#!/bin/bash
+# This script will backup all your .txt files in /etc/tmp
+mkdir /etc/tmp
+for FILE in *.txt
+do
+  echo "Backing up file $FILE"
+  cp $FILE /etc/tmp
+done
+```
 
 ## Some Sample Programs
 
@@ -770,4 +847,3 @@ Any field whether it may be computer science or any other, requires practise.
 Please consider this as a practise assignment, and try to do all the questions yourself and then see the code.
 
 [Click here to see the practise programs #1](./practise1/)
-[Click here to see the practise programs #2](./practise2/)
