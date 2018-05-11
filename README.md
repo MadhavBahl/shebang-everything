@@ -33,7 +33,15 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
 9. [Functions in shell](#functions)
    1. [Syntax for creating functions](#functions)
    2. [Calling a function from another function](#calling-a-function-from-another-function)
-10. [Sample Programs For Revision](#some-sample-programs)
+   3. [Positional Parameters In Functions](#positional-parameters-in-functions)
+   4. [Scope of a variable](#variable-scope)
+   5. [Return codes for function](#return-codes-for-function)
+10. [Wildcards](#wildcards)
+   1. [What are wildcards](@wildcards)
+   2. [Some Commonly Used Wildcards](#some-commonly-used-wildcards)
+   3. [Predefined named character classes](#predefined-named-character-classes)
+   4. [Using wildcards in shell scripts](#using-wildcards-in-shell-scripts)
+11. [Sample Programs For Revision](#some-sample-programs)
 
 ## Scripts
 
@@ -843,7 +851,4 @@ done
 
 ## Some Sample Programs
 
-Any field whether it may be computer science or any other, requires practise.
-Please consider this as a practise assignment, and try to do all the questions yourself and then see the code.
-
-[Click here to see the practise programs #1](./practise1/)
+[Click here to see the sample programs](./practise1/)
