@@ -23,7 +23,14 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
    2. [File Operations](#file-test-operations)
    3. [String Operations](#string-test-operations)
    4. [Arithmetic Operations](#arithmetic-operators)
-5. [Making Decisions Based On Conditions (The IF Statement)](#making-decisions)
+5. [Making Decisions Based On Conditions](#making-decisions)
+   1. [The IF Statement](#the-if-statement)
+      * [Syntax for IF Statement](#the-if-statement)
+      * [IF-Else Tree](#if-else-tree)
+      * [IF-Elif-Else Ladder](#if-elif-ladder)
+   2. [Case statements](#case-statements)
+      * [Syntax for case statements](#case-satements)
+      * [When to use case statements](#when-to-use)
 6. [Iteration (The FOR Loop)](#for-loop)
 7. [Positional Parameters](#positional-parameters)
 8. [Exit Statuses](#exit-status)
@@ -37,10 +44,10 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
    4. [Scope of a variable](#variable-scope)
    5. [Return codes for function](#return-codes-for-function)
 10. [Wildcards](#wildcards)
-   1. [What are wildcards](@wildcards)
-   2. [Some Commonly Used Wildcards](#some-commonly-used-wildcards)
-   3. [Predefined named character classes](#predefined-named-character-classes)
-   4. [Using wildcards in shell scripts](#using-wildcards-in-shell-scripts)
+    1. [What are wildcards](#wildcards)
+    2. [Some Commonly Used Wildcards](#some-commonly-used-wildcards)
+    3. [Predefined named character classes](#predefined-named-character-classes)
+    4. [Using wildcards in shell scripts](#using-wildcards-in-shell-scripts)
 11. [Sample Programs For Revision](#some-sample-programs)
 
 ## Scripts
@@ -373,6 +380,78 @@ else
   echo "You are not using the bash or csh shell"
 fi
 ```
+
+### Case Statements
+
+The case statements are an alternative for if statements which are a little easier to read than complex if elif ladder. However, there are some limitations to case statements.
+
+#### When to use
+
+If you find yourself using an if statement to compare the same variable against some different/discrete values, you can use a case statements instead of if-elif ladder.
+
+```sh
+if [ "$VAR"="one" ]
+then
+  ...
+elif [ "$VAR"="two" ]
+then
+  ...
+elif [ "$VAR"="three" ]
+then
+  ...
+  ...
+  ...
+else
+  ...
+fi
+```
+
+### Syntax
+
+```sh
+case "$VAR" in
+  pattern_1)
+    # commands when $VAR matches pattern 1
+    ;;
+  pattern_2)
+    # commands when $VAR matches pattern 2
+    ;;
+esac
+```
+
+**Note** We can use wildcard to create an else like statement in case.
+
+```sh
+case "$VAR" in
+  pattern_1)
+    # commands when $VAR matches pattern 1
+    ;;
+  pattern_2)
+    # commands when $VAR matches pattern 2
+    ;;
+  *)
+    # This will run if $VAR doesnt match any of the given patterns
+    ;;
+```
+
+#### [Example](./ifElse/case.sh)
+
+```sh
+#!/bin/bash
+read -p "Enter the answer in Y/N: " ANSWER
+case "$ANSWER" in
+  [yY] | [yY][eE][sS])
+    echo "The Answer is Yes :)"
+    ;;
+  [nN] | [nN][oO])
+    echo "The Answer is No :("
+    ;;
+  *)
+    echo "Invalid Answer :/"
+    ;;
+esac
+```
+
 
 ## For Loop
 
@@ -818,17 +897,17 @@ It matches exactly one character.
 
 ### Predefined named character classes
 
-- [[:alpha:]]
+* [[:alpha:]]
 
-- [[:alnum:]]
+* [[:alnum:]]
 
-- [[:space:]]
+* [[:space:]]
 
-- [[:upper:]]]
+* [[:upper:]]]
 
-- [[:lower:]]
+* [[:lower:]]
 
-- [[:digit:]]
+* [[:digit:]]
 
 ### Matching wildcard characters
 
@@ -852,3 +931,5 @@ done
 ## Some Sample Programs
 
 [Click here to see the sample programs](./practise1/)
+
+<a href="./README.pdf" download class="btn-rounded-white">Download The PDF Here</a>

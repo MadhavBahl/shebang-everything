@@ -412,13 +412,53 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
 <li><a href="#arithmetic-operators">Arithmetic Operations</a></li>
 </ol>
 </li>
-<li><a href="#making-decisions">Making Decisions Based On Conditions (The IF Statement)</a></li>
+<li><a href="#making-decisions">Making Decisions Based On Conditions</a>
+<ol>
+<li><a href="#the-if-statement">The IF Statement</a>
+<ul>
+<li><a href="#the-if-statement">Syntax for IF Statement</a></li>
+<li><a href="#if-else-tree">IF-Else Tree</a></li>
+<li><a href="#if-elif-ladder">IF-Elif-Else Ladder</a></li>
+</ul>
+</li>
+<li><a href="#case-statements">Case statements</a>
+<ul>
+<li><a href="#case-satements">Syntax for case statements</a></li>
+<li><a href="#when-to-use">When to use case statements</a></li>
+</ul>
+</li>
+</ol>
+</li>
 <li><a href="#for-loop">Iteration (The FOR Loop)</a></li>
 <li><a href="#positional-parameters">Positional Parameters</a></li>
+<li><a href="#exit-status">Exit Statuses</a>
+<ol>
+<li><a href="#logic-operations">Logical Operations</a></li>
+<li><a href="#the-semicolon">The Semicolon</a></li>
+<li><a href="#the-exit-command">The Exit Command</a></li>
+</ol>
+</li>
+<li><a href="#functions">Functions in shell</a>
+<ol>
+<li><a href="#functions">Syntax for creating functions</a></li>
+<li><a href="#calling-a-function-from-another-function">Calling a function from another function</a></li>
+<li><a href="#positional-parameters-in-functions">Positional Parameters In Functions</a></li>
+<li><a href="#variable-scope">Scope of a variable</a></li>
+<li><a href="#return-codes-for-function">Return codes for function</a></li>
+</ol>
+</li>
+<li><a href="#wildcards">Wildcards</a>
+<ol>
+<li><a href="#wildcards">What are wildcards</a></li>
+<li><a href="#some-commonly-used-wildcards">Some Commonly Used Wildcards</a></li>
+<li><a href="#predefined-named-character-classes">Predefined named character classes</a></li>
+<li><a href="#using-wildcards-in-shell-scripts">Using wildcards in shell scripts</a></li>
+</ol>
+</li>
 <li><a href="#some-sample-programs">Sample Programs For Revision</a></li>
 </ol>
 <h2 id="scripts">Scripts</h2>
-<p>You might have came across the word 'script' a lot of times, but what is the meaninig of a script?  <br />
+<p>You might have came across the word 'script' a lot of times, but what is the meaning of a script?  <br />
 So basically, a script is a command line program that contains a series of commands to be executed. These commands are execued by an interpreter. <br />
 Anything you can put into a command line, you can put in a script. And, scripts are great for automating tasks.
 If you find yourself repeating some commands frequently, you can, rather you should, create a script for doing it!</p>
@@ -667,6 +707,62 @@ SHELL_NAME=<span class="hljs-string">"bash"</span>
   <span class="hljs-built_in">echo</span> <span class="hljs-string">"You are not using the bash or csh shell"</span>
 <span class="hljs-keyword">fi</span>
 </div></code></pre>
+<h3 id="case-statements">Case Statements</h3>
+<p>The case statements are an alternative for if statements which are a little easier to read than complex if elif ladder. However, there are some limitations to case statements.</p>
+<h4 id="when-to-use">When to use</h4>
+<p>If you find yourself using an if statement to compare the same variable against some different/discrete values, you can use a case statements instead of if-elif ladder.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$VAR</span>"</span>=<span class="hljs-string">"one"</span> ]
+<span class="hljs-keyword">then</span>
+  ...
+<span class="hljs-keyword">elif</span> [ <span class="hljs-string">"<span class="hljs-variable">$VAR</span>"</span>=<span class="hljs-string">"two"</span> ]
+<span class="hljs-keyword">then</span>
+  ...
+<span class="hljs-keyword">elif</span> [ <span class="hljs-string">"<span class="hljs-variable">$VAR</span>"</span>=<span class="hljs-string">"three"</span> ]
+<span class="hljs-keyword">then</span>
+  ...
+  ...
+  ...
+<span class="hljs-keyword">else</span>
+  ...
+<span class="hljs-keyword">fi</span>
+</div></code></pre>
+<h3 id="syntax">Syntax</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$VAR</span>"</span> <span class="hljs-keyword">in</span>
+  pattern_1)
+    <span class="hljs-comment"># commands when $VAR matches pattern 1</span>
+    ;;
+  pattern_2)
+    <span class="hljs-comment"># commands when $VAR matches pattern 2</span>
+    ;;
+<span class="hljs-keyword">esac</span>
+</div></code></pre>
+<p><strong>Note</strong> We can use wildcard to create an else like statement in case.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$VAR</span>"</span> <span class="hljs-keyword">in</span>
+  pattern_1)
+    <span class="hljs-comment"># commands when $VAR matches pattern 1</span>
+    ;;
+  pattern_2)
+    <span class="hljs-comment"># commands when $VAR matches pattern 2</span>
+    ;;
+  *)
+    <span class="hljs-comment"># This will run if $VAR doesnt match any of the given patterns</span>
+    ;;
+</div></code></pre>
+<h4 id="example"><a href="./ifElse/case.sh">Example</a></h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">read</span> -p <span class="hljs-string">"Enter the answer in Y/N: "</span> ANSWER
+<span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$ANSWER</span>"</span> <span class="hljs-keyword">in</span>
+  [yY] | [yY][eE][sS])
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The Answer is Yes :)"</span>
+    ;;
+  [nN] | [nN][oO])
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The Answer is No :("</span>
+    ;;
+  *)
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Invalid Answer :/"</span>
+    ;;
+<span class="hljs-keyword">esac</span>
+</div></code></pre>
 <h2 id="for-loop">For Loop</h2>
 <p>Loops can execute a block of code a number of times and are basically used for performing iterations.
 Just like any other programming language, shell scripts also have for loops.</p>
@@ -784,7 +880,7 @@ RETURN_CODE=$?
   <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$HOST</span> unreachable"</span>
 <span class="hljs-keyword">fi</span>
 </div></code></pre>
-<h2 id="logic-operations">Logic Operations</h2>
+<h3 id="logic-operations">Logic Operations</h3>
 <p>Shell scripts supports <strong>logical AND</strong> and <strong>logical OR</strong>.</p>
 <h3 id="and">AND</h3>
 <p>The AND Operator results true if all the conditions are satisfied.</p>
@@ -793,25 +889,213 @@ RETURN_CODE=$?
 <pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
 MY_VAR=10
 <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$MY_VAR</span>"</span> -ge 5 ] &amp;&amp; [ <span class="hljs-string">"<span class="hljs-variable">$MY_VAR</span>"</span> -le 15 ]
-<span class="hljs-keyword">then</span> 
+<span class="hljs-keyword">then</span>
   <span class="hljs-built_in">echo</span> <span class="hljs-string">"Given variable is within the range"</span>
 <span class="hljs-keyword">fi</span>
 </div></code></pre>
+<p><strong>Note</strong> While using AND, the second command will run only if the first command returns a 0 exit status.</p>
+<p>Exampe:</p>
+<pre class="hljs"><code><div>mkdir tempDir &amp;&amp; <span class="hljs-built_in">cd</span> tempDir &amp;&amp; mkdir subTempDir
+</div></code></pre>
+<p>In this example, tempDir is created with <code>mkdir</code> command. If it succeeds, then <code>cd tempDir</code> is executed.</p>
 <h3 id="or">OR</h3>
 <p>The OR Operator results true if any one the conditions are satisfied.</p>
 <p><code>|| = OR</code></p>
-<p><a href="./exit-status/and.sh">Example</a></p>
+<p><a href="./exit-status/or.sh">Example</a></p>
 <pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
 MY_VAR=10
-<span class="hljs-keyword">if</span> [ -e ls /etc ] || [ -e ls /lib ]
-<span class="hljs-keyword">then</span> 
-  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Given variable is within the range"</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$MY_VAR</span>"</span> -ge 15 ] || [ <span class="hljs-string">"<span class="hljs-variable">$MY_VAR</span>"</span> -le 11 ]
+<span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Given variable is either greater than 15 or less than 11"</span>
 <span class="hljs-keyword">fi</span>
 </div></code></pre>
+<p><strong>Note</strong> Just like in AND operation, here also, the first condition will be execued first. If it returns the status code 0, then next condition will not be checked.</p>
+<h3 id="the-semicolon">The Semicolon</h3>
+<p>Separate commands on the same line with a semicolon in between to make sure that they all get executed.
+The command following the semicolon will always get executed no matter the previous command failed or succeeded.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div>mkdir dir1 ; <span class="hljs-built_in">cd</span> dir1
+</div></code></pre>
+<p>The above code is equivalent to</p>
+<pre class="hljs"><code><div>mkdir dir1
+<span class="hljs-built_in">cd</span> dir1
+</div></code></pre>
+<h3 id="the-exit-command">The Exit Command</h3>
+<p>Exit command is used to expicitly define the return code.
+If we do not define the exit status of the shell script explicitly, then by default the exit status of the last command executed is taken as the exit status of the script.
+We can use exit command anywherer in the script, and as soon as exit command is encountered, the shell script will stop executing.</p>
+<pre class="hljs"><code><div>  <span class="hljs-built_in">exit</span> 0
+  <span class="hljs-built_in">exit</span> 1
+  <span class="hljs-built_in">exit</span> 2
+    ...
+    ...
+  <span class="hljs-built_in">exit</span> 255
+</div></code></pre>
+<p><a href="./exit-status/exitCode.sh">Example:</a></p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+DIR_NAME=<span class="hljs-string">"/home/madhav/Desktop/Play"</span>
+<span class="hljs-keyword">if</span> [ -e <span class="hljs-variable">$DIR_NAME</span> ]
+<span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Given Directory Already Exists"</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Moving into <span class="hljs-variable">${DIR_NAME}</span>"</span>
+  <span class="hljs-built_in">cd</span> <span class="hljs-variable">$DIR_NAME</span>
+  <span class="hljs-built_in">exit</span> 0
+<span class="hljs-keyword">fi</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Given Directory Does Not Exists"</span>
+mkdir <span class="hljs-variable">$DIR_NAME</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$DIR_NAME</span>
+<span class="hljs-built_in">exit</span> 1
+</div></code></pre>
+<p>Therefore, using exit code, we can can define custom meanings to exit statuses.</p>
+<h2 id="functions">Functions</h2>
+<p>A set of instructions which can be reused/called any time from the main program whenever the need for those instructions arrives. Consider a situation that you have a particular module that does a particular job, now let's suppose that job has to be done 20 (say) times in the main program (for example calculating maximum number in an array of numbers). Now, if you write the code for that 20 times, your code would become very large, however, if we write a function for that, and call that function whenever it is required, the code would remain short, easy to read and much more modularised.</p>
+<p>Moreover, it is a great coding practise to keep your code DRY.
+DRY stands for Don't Repeat Yourself, i.e., write the code in such a way that you dont have to be copy and pasting same piece of code around everywhere!</p>
+<p>Therefore, functions are great because they make the code DRY, we can write once and use that many times, using functions reduces overall length/size of script. Moreover, functions make program easier to maintain, because they make the code divided into modules making particular place to edit and troubleshoot available in case of bugs/errors.</p>
+<p>Whenever you find yourself repeating a set of instructions, make a function for that. (A functin must be defined before use).</p>
+<p><strong>Note:</strong> It is a good practise to define all your functions at the top before starting the main pragram or main instructions.</p>
+<h3 id="syntax">Syntax</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">function_name</span></span>() {
+    <span class="hljs-built_in">command</span> 1
+    <span class="hljs-built_in">command</span> 2
+    <span class="hljs-built_in">command</span> 3
+      ...
+      ...
+    <span class="hljs-built_in">command</span> N
+}
+</div></code></pre>
+<p>Or,</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-title">function_name</span></span>() {
+    <span class="hljs-built_in">command</span> 1
+    <span class="hljs-built_in">command</span> 2
+    <span class="hljs-built_in">command</span> 3
+      ...
+      ...
+    <span class="hljs-built_in">command</span> N
+}
+</div></code></pre>
+<h4 id="to-call-a-function"><a href="./functions/call.sh">To call a function</a></h4>
+<p>To call a function, simply write it's name on a line in the script.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">myFunc</span></span> () {
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Shell Scripting Is Fun!"</span>
+}
+myFunc
+</div></code></pre>
+<p><strong>Note:</strong> While calling functions, do not use paranthesis like we use in other programming languages.</p>
+<h3 id="calling-a-function-from-another-function">Calling a function from another function</h3>
+<p>To call a function from another function, simply write the function name of the function you want to call.</p>
+<p><a href="./functions/greet.sh">Example:</a></p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">greetings</span></span>() {
+  USER=$(whoami)
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Welcome <span class="hljs-variable">${USER}</span>"</span>
+  currentTime
+}
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">currentTime</span></span>() {
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Current Time Is: <span class="hljs-variable">$(date +%r)</span>"</span>
+}
+greetings
+</div></code></pre>
+<h3 id="positional-parameters-in-functions">Positional Parameters In Functions</h3>
+<p>Just like a shell script, functions can also accept parameters.</p>
+<p>The first parameter is stored in $1
+The second paramaeter is stored in $2 and so on.
+$@ contains all the parameters.</p>
+<p><strong>Note:</strong> $0 is still the name of script itself, not the name of function.</p>
+<p>To provide parameters, just write them after the function name with a white space in between.</p>
+<p><a href="./functions/greet2.sh">Example</a></p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">greetings</span></span>() {
+  <span class="hljs-keyword">for</span> PERSON_NAME <span class="hljs-keyword">in</span> <span class="hljs-variable">$@</span>
+  <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello <span class="hljs-variable">${PERSON_NAME}</span>"</span>
+  <span class="hljs-keyword">done</span>
+}
+greetings World! Random Guy Stranger
+</div></code></pre>
+<h3 id="variable-scope">Variable Scope</h3>
+<h3 id="global-variables">Global Variables</h3>
+<p>All variables have, by default, global scope. Having a global scope means that the value of that variable can be accessed from anywhere in the script. Variables must be defined before it is used.</p>
+<p><strong>Note:</strong> If a variable is defined within a function, it can not be used until that function is called at least once.</p>
+<h3 id="local-variables">Local Variables</h3>
+<p>Local variables can be accessed only from within the function. Local variables are created using <code>local</code> keyword and only functions can have local variables. It is a good practise to keep variables inside a function local.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">myFunc</span></span> () {
+  <span class="hljs-built_in">local</span> MY_VAR=<span class="hljs-string">"Hello World"</span>
+  <span class="hljs-comment"># MY_VAR is available here</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$MY_VAR</span>"</span>
+}
+<span class="hljs-comment"># MY_VAR is not available here</span>
+</div></code></pre>
+<h3 id="return-codes-for-function">Return codes for function</h3>
+<p>A function acts just like a shell script, moreover, a function may be referred to as a shell script within a shell script. Therefore, functions also have an exit status (more precisely, a return code)</p>
+<p><strong>Implicitly</strong> The exit status of last command executed acts as the return code for the function.</p>
+<p><strong>Explicitly</strong> Return codes can me custom. <code>return &lt;RETURN_CODE&gt;</code></p>
+<p><strong>Note</strong> Valid range for return codes = 0 to 255 (0 = Success)</p>
+<p>We can use <code>$?</code> to get the return code of a function.</p>
+<pre class="hljs"><code><div>myFunc
+<span class="hljs-built_in">echo</span> $?
+</div></code></pre>
+<h2 id="wildcards">Wildcards</h2>
+<p>A character or a string patterns that is used to match file and directory names is/are called wildcard(s).</p>
+<p>The process used to expand wildcard pattern into a list of files and/or directories (or basically paths) is called Globbing.</p>
+<p>Wild Cards can be used with most of the commands that require file/dir path as arguement. (Example ls,rm,cp etc).</p>
+<h3 id="some-commonly-used-wildcards">Some Commonly Used Wildcards</h3>
+<h4 id="matches-zero-or-more-characters">* - Matches zero or more characters</h4>
+<p><strong>Example:</strong></p>
+<p><code>*.txt</code>
+<code>hello.*</code>
+<code>great*.md</code></p>
+<h4 id="matches-exactly-one-character">? - matches exactly one character</h4>
+<p><strong>Example:</strong></p>
+<p><code>?.md</code>
+<code>Hello?</code></p>
+<h4 id="a-character-class">[] - A character class</h4>
+<p>This wildcard is used to match any of the characters included between the square brackets (Matching exactly one character).</p>
+<p><strong>Example:</strong> <code>He[loym]</code>, <code>[AIEOU]</code></p>
+<h4 id="maches-characters-not-included-within-brackets">[!] - maches characters not included within brackets</h4>
+<p>It matches exactly one character.</p>
+<p><strong>Example:</strong> To match a consonant: `[!aeiou]</p>
+<p><strong>Note: We can create range using characer classes</strong></p>
+<p><code>[1-5]</code> -- Mathces number 1 to 5</p>
+<p><code>[a-e]</code> -- Matches character a,b,c,d,e</p>
+<h3 id="predefined-named-character-classes">Predefined named character classes</h3>
+<ul>
+<li>
+<p>[[:alpha:]]</p>
+</li>
+<li>
+<p>[[:alnum:]]</p>
+</li>
+<li>
+<p>[[:space:]]</p>
+</li>
+<li>
+<p>[[:upper:]]]</p>
+</li>
+<li>
+<p>[[:lower:]]</p>
+</li>
+<li>
+<p>[[:digit:]]</p>
+</li>
+</ul>
+<h3 id="matching-wildcard-characters">Matching wildcard characters</h3>
+<p>In case we have to match wildcard characters themselves like <code>*</code>, or <code>?</code>, we can go with escape character - <code>\</code></p>
+<p>Example: <code>*\?</code> --&gt; will match all files that end with a question mark.</p>
+<h3 id="using-wildcards-in-shell-scripts">Using wildcards in shell scripts</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-comment"># This script will backup all your .txt files in /etc/tmp</span>
+mkdir /etc/tmp
+<span class="hljs-keyword">for</span> FILE <span class="hljs-keyword">in</span> *.txt
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Backing up file <span class="hljs-variable">$FILE</span>"</span>
+  cp <span class="hljs-variable">$FILE</span> /etc/tmp
+<span class="hljs-keyword">done</span>
+</div></code></pre>
 <h2 id="some-sample-programs">Some Sample Programs</h2>
-<p>Any field whether it may be computer science or any other, requires practise.
-Please consider this as a practise assignment, and try to do all the questions yourself and then see the code.</p>
-<p><a href="./practise1/">Click here to see the practise programs #1</a></p>
+<p><a href="./practise1/">Click here to see the sample programs</a></p>
+<p><a href="./README.pdf" download class="btn-rounded-white">Download The PDF Here</a></p>
 
 </body>
 </html>
