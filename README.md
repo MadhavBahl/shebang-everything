@@ -928,8 +928,55 @@ do
 done
 ```
 
+## Logging
+
+Logs are used to keep a record of what all happened during the execution of a shell script.
+Logs can store any type of information and can be used to answer the 5 W's: "Who, What, When, Where and Why".
+
+Logs are very useful when your shell script produces a lot of output (that might scroll off your screen).
+
+### Syslog
+
+The linux OS uses syslog standard for message logging. 
+The Syslog standard allows programs to generate messages that can be captured, processed and stored by the system logger.
+
+The syslog standard uses facilities and severities to caegorize messages. Each message is labelled with a facility code and a severiy level, the combinations of whose can be used to determine how the messages will be handled.
+
+#### Facilities
+
+They are used to indicate what type of program or what part of the system the message originated from.
+
+Example: kern (for kernel), user, mail, daemon, auth, local0 to local7 (for custom logs) etc.
+
+#### Severities
+
+As the name suggest, they measure the severity of the message.
+Most severe message are emergency messages and least severe messages are the debug messages.
+
+Example: emerg, alert, crit, err, warning, notice, info, debug
+
+Logs are handled by system logger according to their facilities and severites and are written in a file. There are several logging rules, but they arer configurable and can be changed.
+
+Example:
+
+Some systems have messages stored in `/var/log/messages` or `s/var/log/syslog`
+
+### The Logger Command
+
+The logger command generates syslog messages. 
+`logger "Message"`
+By default, the logger command creates messages with user facility and notice severity.
+
+To specify the facility and severity, use -p option followed by the facility then a `.` then the severity, and then the message.
+
+Example:
+
+```sh
+logger -p local2.alert "Message"
+```
+
 ## Some Sample Programs
 
 [Click here to see the sample programs](./practise1/)
 
-<a href="./README.pdf" download class="btn-rounded-white">Download The PDF Here</a>
+<a href="./README.pdf" style="display: inline-block; margin: 0.3em; padding: 1.2em 5em; overflow: hidden; position: relative; text-decoration: none; text-transform: uppercase; border-radius: 3px;  -webkit-transition: 0.3s; -moz-transition: 0.3s; -ms-transition: 0.3s; -o-transition: 0.3s;  transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border: none;  font-size: 15px; text-align: center;   background-color: #03A9F4; color: white;" download class="btn-rounded-white">Download The PDF Here</a>
