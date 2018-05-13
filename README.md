@@ -1,3 +1,10 @@
+---
+layout: post
+published-on: 13 May 2018
+title: Shell Scripting Guidebook
+Comment:  You might have came across the word 'script' a lot of times, but what is the meaninig of a script? How can you write scripts? What is shell scripting? What all can we do using shell? Find all your answers on this tutorial website (Your unofficial guidebook too shell programming)  
+---
+
 # Shell Scripting
 
 A shell script is a computer program designed to be run by the Unix shell, a command-line interpreter.
@@ -5,7 +12,7 @@ Use this guide to get a great hold on shell scripting!
 
 <meta name="description" content="You might have came across the word 'script' a lot of times, but what is the meaninig of a script? 
 How can you write scripts? What is shell scripting? 
-What all can we do using shell? 
+What all can we do using shell?
 Find all your answers on this tutorial website (Your unofficial guidebook too shell programming)" />
 
 <link rel="shortcut icon" href="img/bash.png">
@@ -54,7 +61,9 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
     2. [Some Commonly Used Wildcards](#some-commonly-used-wildcards)
     3. [Predefined named character classes](#predefined-named-character-classes)
     4. [Using wildcards in shell scripts](#using-wildcards-in-shell-scripts)
-11. [Sample Programs For Revision](#some-sample-programs)
+11. [Debugging](#debugging)
+12. [Sample Programs For Revision](#some-sample-programs)
+13. [Download free PDF](#downloadable-pdf)
 
 ## Scripts
 
@@ -157,15 +166,15 @@ VARIABLE_NAME = "Value"
 
 ### Important
 
-- Variables are case sensitive
+* Variables are case sensitive
 
-- By convention, variables are uppercase
+* By convention, variables are uppercase
 
-- To use a variable, just write the variable name followed by the `$` sign
+* To use a variable, just write the variable name followed by the `$` sign
 
 ### Examples Of Variables
 
-- Example 1
+* Example 1
 
 ```sh
 #!/bin/bash
@@ -175,7 +184,7 @@ echo "Hello, I am $MY_NAME"
 
 [Download the code](./variable/name.sh)
 
-- Example 2
+* Example 2
 
 ```sh
 #!/bin/bash
@@ -185,7 +194,7 @@ echo "Hello, I am ${MY_NAME}"
 
 [Download the code](./variable/name2.sh)
 
-- Example 3: Assign command output to a variable
+* Example 3: Assign command output to a variable
 
 ```sh
 #!/bin/bash
@@ -205,7 +214,7 @@ echo "$CONTENTS"
 
 [Download the code](./variable/comd2.sh)
 
-- Example 4
+* Example 4
 
 ```sh
 #!/bin/bash
@@ -1077,8 +1086,72 @@ Example:
 logger -p local2.alert "Message"
 ```
 
+## Debugging
+
+A bug is an error in a computer program/software that causes it to produce an unexpected or an incorrect result. Most of the bugs are cased by errors in the code and it's design. To fix an error, try to reach to the root of that unexpected behaviour. 
+
+The eprocess of finding bugs in the script/program/software and fixing them is called debugging. 
+
+The bash shell provides some options that can help you in debugging your script. You can use these options by updating first line of the script. 
+
+The most popular of these options is the -x option.
+-x option prints commands and arguements as they execute. It is called print debugging, tracing or an x-trace.
+
+`#!/bin/bash -x`
+
+If you want to do this on the command line/terminal,
+
+`set -x`
+
+set +x to stop debugging.
+
+[Preview Image](https://user-images.githubusercontent.com/26179770/39966935-3e9035c6-56d1-11e8-85a2-e7853bd9a9c2.png)
+
+set -x will start the x-trace and set +x will stop the x-trace.
+
+Example: 
+
+```sh
+#!/bin/bash-x
+VALUE="Hello World!"
+echo "$VALUE"
+```
+
+We can also turn the debugging on for a portion of a script.
+
+```sh
+#!/bin/bash
+echo "Turning x-trace on!"
+set -x
+VAL="Hello World!"
+echo "$VAL"
+set +x
+VAL="x-trace turned off!"
+echo "Turning x-trace off!"
+echo "$VAL"
+```
+
+#### Another useful options
+
+-e = Exit on error
+
+This will cause your script to exit immediately if a command exits with a non-zero exit status.
+It can be combined with other options (like the -x option) like:
+
+```sh
+  #!/bin/bash-xe
+  #!/bin/bash-ex
+  #!/bin/bash-x-e
+  #!/bin/bash-e-x
+```
+
+-v = prints shell commands/input lines as they are read.
+It can also be combined with other options just like above.
+
 ## Some Sample Programs
 
 [Click here to see the sample programs](./practise1/)
 
-<h1><a href="./README.pdf" style="text-align: center" download class="btn-rounded-white">Download The PDF Here</a></h1>
+## Downloadable PDF
+
+<a href="./README.pdf" style="display: inline-block; margin: 0.3em; padding: 1.2em 5em; overflow: hidden; position: relative; text-decoration: none; text-transform: uppercase; border-radius: 3px;  -webkit-transition: 0.3s; -moz-transition: 0.3s; -ms-transition: 0.3s; -o-transition: 0.3s;  transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border: none;  font-size: 15px; text-align: center;   background-color: #03A9F4; color: white; margin-left: 38%;" download class="btn-rounded-white">Download The PDF Here</a>
