@@ -390,7 +390,7 @@ blockquote {
 Use this guide to get a great hold on shell scripting!</p>
 <meta name="description" content="You might have came across the word 'script' a lot of times, but what is the meaninig of a script? 
 How can you write scripts? What is shell scripting? 
-What all can we do using shell? 
+What all can we do using shell?
 Find all your answers on this tutorial website (Your unofficial guidebook too shell programming)" />
 <link rel="shortcut icon" href="img/bash.png">
 <h2 id="index-of-contents">Index Of Contents</h2>
@@ -429,7 +429,16 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
 </li>
 </ol>
 </li>
-<li><a href="#for-loop">Iteration (The FOR Loop)</a></li>
+<li><a href="#iterative-statements">Iterative Statements</a>
+<ol>
+<li><a href="#for-loop">The For loop</a></li>
+<li><a href="#while-loop">The While loop</a></li>
+<li><a href="#infinite-loop">Infinite loop</a></li>
+<li><a href="#example:-print-first-10-natural-numbers">Examples</a></li>
+<li><a href="#the-continue-statement">The continue statement</a></li>
+<li><a href="#the-break-statement">The break statement</a></li>
+</ol>
+</li>
 <li><a href="#positional-parameters">Positional Parameters</a></li>
 <li><a href="#exit-status">Exit Statuses</a>
 <ol>
@@ -455,14 +464,16 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
 <li><a href="#using-wildcards-in-shell-scripts">Using wildcards in shell scripts</a></li>
 </ol>
 </li>
+<li><a href="#debugging">Debugging</a></li>
 <li><a href="#some-sample-programs">Sample Programs For Revision</a></li>
+<li><a href="#downloadable-pdf">Download free PDF</a></li>
 </ol>
 <h2 id="scripts">Scripts</h2>
 <p>You might have came across the word 'script' a lot of times, but what is the meaning of a script?  <br />
 So basically, a script is a command line program that contains a series of commands to be executed. These commands are execued by an interpreter. <br />
 Anything you can put into a command line, you can put in a script. And, scripts are great for automating tasks.
 If you find yourself repeating some commands frequently, you can, rather you should, create a script for doing it!</p>
-<p><img src="https://user-images.githubusercontent.com/26179770/39190779-f24c3094-47f2-11e8-8665-c8dd6e369a2d.png" alt="image"></p>
+<p><a href="https://user-images.githubusercontent.com/26179770/39190779-f24c3094-47f2-11e8-8665-c8dd6e369a2d.png">!Image</a></p>
 <h2 id="our-first-script">Our first script</h2>
 <pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
 <span class="hljs-built_in">echo</span> <span class="hljs-string">"My First Script!"</span>
@@ -540,7 +551,6 @@ $ ./name.py
 MY_NAME=<span class="hljs-string">"Madhav Bahl"</span>
 <span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello, I am <span class="hljs-variable">$MY_NAME</span>"</span>
 </div></code></pre>
-<p><a href="./variable/name.sh">Download the code</a></p>
 <ul>
 <li>Example 2</li>
 </ul>
@@ -548,7 +558,6 @@ MY_NAME=<span class="hljs-string">"Madhav Bahl"</span>
 MY_NAME=<span class="hljs-string">"Madhav Bahl"</span>
 <span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello, I am <span class="hljs-variable">${MY_NAME}</span>"</span>
 </div></code></pre>
-<p><a href="./variable/name2.sh">Download the code</a></p>
 <ul>
 <li>Example 3: Assign command output to a variable</li>
 </ul>
@@ -563,7 +572,6 @@ CONTENTS=`ls`
 <span class="hljs-built_in">echo</span> <span class="hljs-string">"The contents of this directory are: "</span>
 <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$CONTENTS</span>"</span>
 </div></code></pre>
-<p><a href="./variable/comd2.sh">Download the code</a></p>
 <ul>
 <li>Example 4</li>
 </ul>
@@ -571,7 +579,6 @@ CONTENTS=`ls`
 SERVER_NAME=$(hostname)
 <span class="hljs-built_in">echo</span> <span class="hljs-string">"This script is being run on <span class="hljs-variable">${SERVER_NAME}</span>"</span>
 </div></code></pre>
-<p><a href="./variable/comd.sh">Download the code</a></p>
 <h3 id="variable-names">Variable Names</h3>
 <p>Alphanumeric characters, starting with an alphabet or underscore and can contain digits or underscores in between.</p>
 <h4 id="valid-variable-names">Valid Variable Names</h4>
@@ -763,10 +770,11 @@ SHELL_NAME=<span class="hljs-string">"bash"</span>
     ;;
 <span class="hljs-keyword">esac</span>
 </div></code></pre>
-<h2 id="for-loop">For Loop</h2>
-<p>Loops can execute a block of code a number of times and are basically used for performing iterations.
-Just like any other programming language, shell scripts also have for loops.</p>
-<h3 id="syntax">Syntax</h3>
+<h2 id="iterative-statements">Iterative Statements</h2>
+<p>Loops can execute a block of code a number of times and are basically used for performing iterations.</p>
+<h3 id="the-for-loop">The For Loop</h3>
+<p>Just like any other programming language, shell scripts also have for loops.</p>
+<h4 id="syntax">Syntax</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> VARIABLE_NAME <span class="hljs-keyword">in</span> ITEM_1 ITEM_N
 <span class="hljs-keyword">do</span>
   <span class="hljs-built_in">command</span> 1
@@ -811,6 +819,74 @@ NEW=<span class="hljs-string">"new"</span>
   mv <span class="hljs-variable">$FILE</span> <span class="hljs-variable">$NEW</span>-<span class="hljs-variable">$FILE</span>
 <span class="hljs-keyword">done</span>
 </div></code></pre>
+<h3 id="while-loop">While Loop</h3>
+<p>While loop repeats a series of commands for as long as the given condition holds true.</p>
+<h4 id="syntax">Syntax</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">while</span> [ CONNDITION_IS_TRUE ]
+<span class="hljs-keyword">do</span>
+  <span class="hljs-comment"># Commands will change he entry condition</span>
+  <span class="hljs-built_in">command</span> 1
+  <span class="hljs-built_in">command</span> 2
+    ...
+    ...
+  <span class="hljs-built_in">command</span> N
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<h3 id="infinite-loop">Infinite loop</h3>
+<p>A loop which never exits, or basically, the entry condition never becomes false. If this happens by mistake, press <code>ctrl+c</code> or <code>cmd+c</code> to exit from the running script.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">while</span> [ CONNDITION_IS_TRUE ]
+<span class="hljs-keyword">do</span>
+  <span class="hljs-comment"># Commands do not change the conditiono</span>
+  <span class="hljs-built_in">command</span> 1
+  <span class="hljs-built_in">command</span> 2
+    ...
+    ...
+  <span class="hljs-built_in">command</span> N
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p>However, there are some cases where you might want an infinite loop. In that case you can easily create one.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">command</span> 1
+  <span class="hljs-built_in">command</span> 2
+    ...
+    ...
+  <span class="hljs-built_in">command</span> N
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<h4 id="example-print-first-10-natural-numbers"><a href="./loops/natur.sh">Example: print first 10 natural numbers</a></h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bini/bash</span>
+INDEX=1
+<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$INDEX</span> -lt 11 ]
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"Current Number: <span class="hljs-variable">${INDEX}</span>"</span>
+  ((INDEX++))
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<h4 id="example-read-user-name-until-correct"><a href="./loops/user.sh">Example: Read user name until correct</a></h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">while</span> [ <span class="hljs-string">"<span class="hljs-variable">$CORRECT</span>"</span> != y ]
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">read</span> -p <span class="hljs-string">"Enter your username: "</span> USERNAME
+  <span class="hljs-built_in">read</span> -p <span class="hljs-string">"Is <span class="hljs-variable">$USERNAME</span> correct? "</span> CORRECT
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<h4 id="example-reading-a-file-line-by-line"><a href="./read.sh">Example: reading a file line by line</a></h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+LINE=1
+<span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> CURRENT_LINE
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">${LINE}</span>: <span class="hljs-variable">$CURRENT_LINE</span>"</span>
+  ((LINE++))
+<span class="hljs-keyword">done</span> &lt; /etc/passwd
+<span class="hljs-comment"># This script loops through the file /etc/passwd line by line</span>
+</div></code></pre>
+<p>Condition can be any test or command. If the test/command retrns a 0 exit status, it means that the condition is true and commands will be executed. If the command returns a non-zero exit status, it the loop will stop its iterations.
+If the condition is false initially, then the commands inside the loop will never get executed.</p>
+<h3 id="the-continue-statement">The continue statement</h3>
+<p><code>continue</code> statement is used to take the flow of control to the next iteration. Any statement after continue statement is hit will not be executed and the flow of control will shit to the next iteration.</p>
+<h3 id="the-break-statement">The break statement</h3>
+<p><code>break</code> statement can be used in while loops (or other loops like for loop) to end the loops. Once the break statement is hit, the flow of control will move outside the loop.</p>
 <h2 id="positional-parameters">Positional Parameters</h2>
 <p>Some arguements or parameters can be passed when we call the script.</p>
 <p>For Example:</p>
@@ -1093,9 +1169,73 @@ mkdir /etc/tmp
   cp <span class="hljs-variable">$FILE</span> /etc/tmp
 <span class="hljs-keyword">done</span>
 </div></code></pre>
+<h2 id="logging">Logging</h2>
+<p>Logs are used to keep a record of what all happened during the execution of a shell script.
+Logs can store any type of information and can be used to answer the 5 W's: &quot;Who, What, When, Where and Why&quot;.</p>
+<p>Logs are very useful when your shell script produces a lot of output (that might scroll off your screen).</p>
+<h3 id="syslog">Syslog</h3>
+<p>The linux OS uses syslog standard for message logging.
+The Syslog standard allows programs to generate messages that can be captured, processed and stored by the system logger.</p>
+<p>The syslog standard uses facilities and severities to caegorize messages. Each message is labelled with a facility code and a severiy level, the combinations of whose can be used to determine how the messages will be handled.</p>
+<h4 id="facilities">Facilities</h4>
+<p>They are used to indicate what type of program or what part of the system the message originated from.</p>
+<p>Example: kern (for kernel), user, mail, daemon, auth, local0 to local7 (for custom logs) etc.</p>
+<h4 id="severities">Severities</h4>
+<p>As the name suggest, they measure the severity of the message.
+Most severe message are emergency messages and least severe messages are the debug messages.</p>
+<p>Example: emerg, alert, crit, err, warning, notice, info, debug</p>
+<p>Logs are handled by system logger according to their facilities and severites and are written in a file. There are several logging rules, but they arer configurable and can be changed.</p>
+<p>Example:</p>
+<p>Some systems have messages stored in <code>/var/log/messages</code> or <code>s/var/log/syslog</code></p>
+<h3 id="the-logger-command">The Logger Command</h3>
+<p>The logger command generates syslog messages.
+<code>logger &quot;Message&quot;</code>
+By default, the logger command creates messages with user facility and notice severity.</p>
+<p>To specify the facility and severity, use -p option followed by the facility then a <code>.</code> then the severity, and then the message.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div>logger -p local2.alert <span class="hljs-string">"Message"</span>
+</div></code></pre>
+<h2 id="debugging">Debugging</h2>
+<p>A bug is an error in a computer program/software that causes it to produce an unexpected or an incorrect result. Most of the bugs are cased by errors in the code and it's design. To fix an error, try to reach to the root of that unexpected behaviour.</p>
+<p>The eprocess of finding bugs in the script/program/software and fixing them is called debugging.</p>
+<p>The bash shell provides some options that can help you in debugging your script. You can use these options by updating first line of the script.</p>
+<p>The most popular of these options is the -x option.
+-x option prints commands and arguements as they execute. It is called print debugging, tracing or an x-trace.</p>
+<p><code>#!/bin/bash -x</code></p>
+<p>If you want to do this on the command line/terminal,</p>
+<p><code>set -x</code></p>
+<p>set +x to stop debugging.</p>
+<p><img src="https://user-images.githubusercontent.com/26179770/39967178-a04cf9fe-56d4-11e8-919b-0908d82d6ace.png" alt="image"></p>
+<p>set -x will start the x-trace and set +x will stop the x-trace.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">#!/bin/bash-x</span>
+VALUE=<span class="hljs-string">"Hello World!"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$VALUE</span>"</span>
+</div></code></pre>
+<p>We can also turn the debugging on for a portion of a script.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Turning x-trace on!"</span>
+<span class="hljs-built_in">set</span> -x
+VAL=<span class="hljs-string">"Hello World!"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$VAL</span>"</span>
+<span class="hljs-built_in">set</span> +x
+VAL=<span class="hljs-string">"x-trace turned off!"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Turning x-trace off!"</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$VAL</span>"</span>
+</div></code></pre>
+<h4 id="another-useful-options">Another useful options</h4>
+<p>-e = Exit on error</p>
+<p>This will cause your script to exit immediately if a command exits with a non-zero exit status.
+It can be combined with other options (like the -x option) like:</p>
+<pre class="hljs"><code><div>  <span class="hljs-comment">#!/bin/bash-xe</span>
+  <span class="hljs-comment">#!/bin/bash-ex</span>
+  <span class="hljs-comment">#!/bin/bash-x-e</span>
+  <span class="hljs-comment">#!/bin/bash-e-x</span>
+</div></code></pre>
+<p>-v = prints shell commands/input lines as they are read.
+It can also be combined with other options just like above.</p>
 <h2 id="some-sample-programs">Some Sample Programs</h2>
 <p><a href="./practise1/">Click here to see the sample programs</a></p>
-<p><a href="./README.pdf" download class="btn-rounded-white">Download The PDF Here</a></p>
 
 </body>
 </html>

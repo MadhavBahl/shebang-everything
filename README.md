@@ -1,10 +1,3 @@
----
-layout: post
-published-on: 13 May 2018
-title: Shell Scripting Guidebook
-Comment:  You might have came across the word 'script' a lot of times, but what is the meaninig of a script? How can you write scripts? What is shell scripting? What all can we do using shell? Find all your answers on this tutorial website (Your unofficial guidebook too shell programming)  
----
-
 # Shell Scripting
 
 A shell script is a computer program designed to be run by the Unix shell, a command-line interpreter.
