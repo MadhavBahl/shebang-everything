@@ -31,7 +31,13 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
    2. [Case statements](#case-statements)
       * [Syntax for case statements](#case-satements)
       * [When to use case statements](#when-to-use)
-6. [Iteration (The FOR Loop)](#for-loop)
+6. [Iterative Statements](#iterative-statements)
+   1. [The For loop](#for-loop)
+   2. [The While loop](#while-loop)
+   3. [Infinite loop](#infinite-loop)
+   4. [Examples](#example:-print-first-10-natural-numbers)
+   5. [The continue statement](#the-continue-statement)
+   6. [The break statement](#the-break-statement)
 7. [Positional Parameters](#positional-parameters)
 8. [Exit Statuses](#exit-status)
    1. [Logical Operations](#logic-operations)
@@ -452,13 +458,15 @@ case "$ANSWER" in
 esac
 ```
 
-
-## For Loop
+## Iterative Statements
 
 Loops can execute a block of code a number of times and are basically used for performing iterations.
+
+### The For Loop
+
 Just like any other programming language, shell scripts also have for loops.
 
-### Syntax
+#### Syntax
 
 ```sh
 for VARIABLE_NAME in ITEM_1 ITEM_N
@@ -517,6 +525,100 @@ do
   mv $FILE $NEW-$FILE
 done
 ```
+
+### While Loop
+
+While loop repeats a series of commands for as long as the given condition holds true.
+
+#### Syntax
+
+```sh
+while [ CONNDITION_IS_TRUE ]
+do
+  # Commands will change he entry condition
+  command 1
+  command 2
+    ...
+    ...
+  command N
+done
+```
+
+### Infinite loop
+
+A loop which never exits, or basically, the entry condition never becomes false. If this happens by mistake, press `ctrl+c` or `cmd+c` to exit from the running script.
+
+```sh
+while [ CONNDITION_IS_TRUE ]
+do
+  # Commands do not change the conditiono
+  command 1
+  command 2
+    ...
+    ...
+  command N
+done
+```
+
+However, there are some cases where you might want an infinite loop. In that case you can easily create one.
+
+```sh
+while true
+do
+  command 1
+  command 2
+    ...
+    ...
+  command N
+done
+```
+
+#### [Example: print first 10 natural numbers](./loops/natur.sh)
+
+```sh
+#!/bini/bash
+INDEX=1
+while [ $INDEX -lt 11 ]
+do
+  echo "Current Number: ${INDEX}"
+  ((INDEX++))
+done
+```
+
+#### [Example: Read user name until correct](./loops/user.sh)
+
+```sh
+#!/bin/bash
+while [ "$CORRECT" != y ]
+do
+  read -p "Enter your username: " USERNAME
+  read -p "Is $USERNAME correct? " CORRECT
+done
+```
+
+#### [Example: reading a file line by line](./read.sh)
+
+```sh
+#!/bin/bash
+LINE=1
+while read CURRENT_LINE
+do
+  echo "${LINE}: $CURRENT_LINE"
+  ((LINE++))
+done < /etc/passwd
+# This script loops through the file /etc/passwd line by line
+```
+
+Condition can be any test or command. If the test/command retrns a 0 exit status, it means that the condition is true and commands will be executed. If the command returns a non-zero exit status, it the loop will stop its iterations.
+If the condition is false initially, then the commands inside the loop will never get executed.
+
+### The continue statement
+
+`continue` statement is used to take the flow of control to the next iteration. Any statement after continue statement is hit will not be executed and the flow of control will shit to the next iteration.
+
+### The break statement
+
+`break` statement can be used in while loops (or other loops like for loop) to end the loops. Once the break statement is hit, the flow of control will move outside the loop.
 
 ## Positional Parameters
 
@@ -979,4 +1081,4 @@ logger -p local2.alert "Message"
 
 [Click here to see the sample programs](./practise1/)
 
-<a href="./README.pdf" style="display: inline-block; margin: 0.3em; padding: 1.2em 5em; overflow: hidden; position: relative; text-decoration: none; text-transform: uppercase; border-radius: 3px;  -webkit-transition: 0.3s; -moz-transition: 0.3s; -ms-transition: 0.3s; -o-transition: 0.3s;  transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border: none;  font-size: 15px; text-align: center;   background-color: #03A9F4; color: white;" download class="btn-rounded-white">Download The PDF Here</a>
+<h1><a href="./README.pdf" style="text-align: center" download class="btn-rounded-white">Download The PDF Here</a></h1>
