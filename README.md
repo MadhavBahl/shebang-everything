@@ -54,9 +54,14 @@ Find all your answers on this tutorial website (Your unofficial guidebook too sh
     2. [Some Commonly Used Wildcards](#some-commonly-used-wildcards)
     3. [Predefined named character classes](#predefined-named-character-classes)
     4. [Using wildcards in shell scripts](#using-wildcards-in-shell-scripts)
-11. [Debugging](#debugging)
-12. [Sample Programs For Revision](#some-sample-programs)
-13. [Download free PDF](#downloadable-pdf)
+11. [Logging](#logging)
+    1. [Syslog](#syslog)
+    2. [Facilities](#facilities)
+    3. [Severities](#severities)
+    4. [The Logger Command](#the-logger-command)
+12. [Debugging](#debugging)
+13. [Sample Programs For Revision](#some-sample-programs)
+14. [Download free PDF](#downloadable-pdf)
 
 ## Scripts
 
@@ -152,7 +157,7 @@ Variables are basically storage location that have a name and can store some dat
 ### Syntax For Variables
 
 ```sh
-VARIABLE_NAME = "Value"
+VARIABLE_NAME="Value"
 ```
 
 ### Important
@@ -438,6 +443,7 @@ case "$VAR" in
   *)
     # This will run if $VAR doesnt match any of the given patterns
     ;;
+esac
 ```
 
 #### [Example](./ifElse/case.sh)
@@ -517,7 +523,7 @@ In this simple example we will see how to rename each file with .txt format
 
 ```sh
 #!/bin/bash
-FILES=$(ls *txt)
+FILES=$(ls *.txt)
 NEW="new"
 for FILE in $FILES
 do
@@ -622,11 +628,11 @@ If the condition is false initially, then the commands inside the loop will neve
 
 ## Positional Parameters
 
-Some arguements or parameters can be passed when we call the script. 
+Some arguments or parameters can be passed when we call the script. 
 
 For Example:
 
-`$script.sh param1 param2 param3 param4`
+`$ ./script.sh param1 param2 param3 param4`
 
 All the parameters will be stored in:
 
@@ -828,9 +834,9 @@ DRY stands for Don't Repeat Yourself, i.e., write the code in such a way that yo
 
 Therefore, functions are great because they make the code DRY, we can write once and use that many times, using functions reduces overall length/size of script. Moreover, functions make program easier to maintain, because they make the code divided into modules making particular place to edit and troubleshoot available in case of bugs/errors.
 
-Whenever you find yourself repeating a set of instructions, make a function for that. (A functin must be defined before use).
+Whenever you find yourself repeating a set of instructions, make a function for that. (A function must be defined before use).
 
-**Note:** It is a good practise to define all your functions at the top before starting the main pragram or main instructions.
+**Note:** It is a good practise to define all your functions at the top before starting the main program or main instructions.
 
 ### Syntax
 
@@ -896,7 +902,7 @@ greetings
 Just like a shell script, functions can also accept parameters.
 
 The first parameter is stored in $1
-The second paramaeter is stored in $2 and so on.
+The second parameter is stored in $2 and so on.
 $@ contains all the parameters.
 
 **Note:** $0 is still the name of script itself, not the name of function.
@@ -960,7 +966,7 @@ A character or a string patterns that is used to match file and directory names 
 
 The process used to expand wildcard pattern into a list of files and/or directories (or basically paths) is called Globbing.
 
-Wild Cards can be used with most of the commands that require file/dir path as arguement. (Example ls,rm,cp etc).
+Wild Cards can be used with most of the commands that require file/dir path as argument. (Example ls,rm,cp etc).
 
 ### Some Commonly Used Wildcards
 
@@ -985,11 +991,11 @@ This wildcard is used to match any of the characters included between the square
 
 **Example:** `He[loym]`, `[AIEOU]`
 
-#### [!] - maches characters not included within brackets
+#### [!] - matches characters not included within brackets
 
 It matches exactly one character.
 
-**Example:** To match a consonant: `[!aeiou]
+**Example:** To match a consonant: `[!aeiou]`
 
 **Note: We can create range using characer classes**
 
@@ -1081,12 +1087,12 @@ logger -p local2.alert "Message"
 
 A bug is an error in a computer program/software that causes it to produce an unexpected or an incorrect result. Most of the bugs are cased by errors in the code and it's design. To fix an error, try to reach to the root of that unexpected behaviour. 
 
-The eprocess of finding bugs in the script/program/software and fixing them is called debugging. 
+The process of finding bugs in the script/program/software and fixing them is called debugging. 
 
 The bash shell provides some options that can help you in debugging your script. You can use these options by updating first line of the script. 
 
 The most popular of these options is the -x option.
--x option prints commands and arguements as they execute. It is called print debugging, tracing or an x-trace.
+-x option prints commands and arguments as they execute. It is called print debugging, tracing or an x-trace.
 
 `#!/bin/bash -x`
 
@@ -1096,7 +1102,7 @@ If you want to do this on the command line/terminal,
 
 set +x to stop debugging.
 
-[Preview Image](https://user-images.githubusercontent.com/26179770/39966935-3e9035c6-56d1-11e8-85a2-e7853bd9a9c2.png)
+![Preview Image](./README-image.png)
 
 set -x will start the x-trace and set +x will stop the x-trace.
 
