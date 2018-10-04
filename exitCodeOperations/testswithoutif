@@ -1,0 +1,10 @@
+#!/bin/bash
+param=1
+
+[[ "$param" -eq 1 ]] && echo "logic operator && grabs the exit code of the [[ ]] test if return code  eq 0\"sucess\" run the following commands"
+
+[[ "$param" -eq 2 ]] || echo "logic operator && grabs the exit code of the [[ ]] test if return code ne 0 \"not sucess\" run the following commands"
+
+[[ "$param" -eq 1 ]] &&( echo "this spwan a subshell if you need to run multiples commands" ;echo "if the previos operation was sucessfull")
+
+[[ "$param" -eq 1 ]] && { echo "this doesn't spwan a subshell " ;echo "run multiples commands if the previos operation was sucessfull" ;}

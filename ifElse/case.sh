@@ -1,5 +1,5 @@
 #!/bin/bash
-read -p "Enter the answer in Y/N: " ANSWER
+read -r -p "Enter the answer in Y/N: " ANSWER
 case "$ANSWER" in
   [yY] | [yY][eE][sS])
     echo "The Answer is Yes :)"

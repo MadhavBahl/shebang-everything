@@ -1,8 +1,8 @@
 #!/bin/bash
 function fileCount () {
     LOC=$1
-    ls $LOC > outText.txt
+    ls "$LOC" > outText.txt
     NUM_FILES=$(wc -w outText.txt)
-    echo $NUM_FILES
+    echo "$NUM_FILES"
 }
 fileCount /etc
