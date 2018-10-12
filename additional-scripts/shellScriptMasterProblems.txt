@@ -1,0 +1,28 @@
+#input from the user for director and create backup directory in the desired location entered by the user
+
+#count the number of sub-directories in a directory
+
+#check a variable is empty or not
+
+#read 5 file names from the user. Check if the user has entered the fie name HELLO.
+show all the name while searching and stop the script as soon the file name is encountered
+
+#Display the first location of first occurence of a acharacter inside a string
+input: input the string
+ask the user for which character's first occurance inside a string
+
+#Read in one character from the user (y,Y,n,N) If character is y or Y display YES else No
+Constraint: No other character will be displayed as input
+
+#accept 5 integer values and find its average in floating point with three decimal places
+
+#creates a directory structure DIR1 which has five files in it F1,F2,F3,F4,F5. Add the names of a different
+fruit in each file. Now create a soft link of each file on desktop and access through soft link for concatenating the content in the new file FILE6
+
+#copies all the files of desired extension from the entire system to the pen drive. For eg
+If the user has given .doc extension, all the files of the .doc extension must be coppied to the pen drive
+
+#gets input the credit card number eg 1234 4567 7890 1238 and stores the number. Then displays the masked three
+digits from each quad. (***4 ***7 ***0 ***8)
+
+#diamond pattern
